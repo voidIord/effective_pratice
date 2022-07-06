@@ -23,15 +23,14 @@ package уникальное имя пакета
         android:theme="@style/Theme.WeatherApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <!-- activity содержит описание неких activity в приложении, не вполне понимаю что это, полагаю это какие то процессы,
-        запускаемые в приложении. Каждое новое activity необходимо объявлятся в этом файле, иначе оно, че бы оно ни было,
-         не будет работать-->
+        <!-- activity содержит описание неких activity в приложении.
+        Каждое новое activity необходимо объявлятся в этом файле, иначе оно, не будет работать-->
         <activity
             android:name=".MainActivity"
             android:exported="true">
+            <!-- рассказывает где запустить приложение-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

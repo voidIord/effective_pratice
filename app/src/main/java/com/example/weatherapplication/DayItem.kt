@@ -8,9 +8,7 @@ data class DayItem(
     val time: String,
     val condition: String,
     val imageUrl: String,
-    val maxTemp: String,
     val currentTemp: String,
-    val minTemp: String,
     val hours: String,
 
 )
