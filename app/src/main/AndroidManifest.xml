@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--xmlns:android определяет пространство имён android
+package уникальное имя пакета
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.weatherapplication">
+    <uses-permission android:name="android.permission.INTERNET"/><!--чтобы отправлять запросы на сервер и получать информацию-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!--чтобы использовать местоположение пользователя-->
+
+    <!--application содержит описание основных элементов приложения:стили, значки и так далее   -->
+    <!--android:usesCleartextTraffic="true" чтобы избежать проблем с открытием web-страниц разных типов-->
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.WeatherApplication"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <!-- activity содержит описание неких activity в приложении, не вполне понимаю что это, полагаю это какие то процессы,
+        запускаемые в приложении. Каждое новое activity необходимо объявлятся в этом файле, иначе оно, че бы оно ни было,
+         не будет работать-->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
