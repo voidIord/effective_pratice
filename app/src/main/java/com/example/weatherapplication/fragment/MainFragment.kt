@@ -76,9 +76,9 @@ class MainFragment : Fragment() {
         }
     }
 
-    val resaultText: EditText? = binding.root.findViewById<EditText>(R.id.tvCurrentTemp)
+    /*val resaultText: EditText? = binding.root.findViewById<EditText>(R.id.tvCurrentTemp)
         .also { @GET("https://api.openweathermap.org/data/2.5/weather?lat=54&lon=73&appid=$API_KEY")
-    resaultText = it }
+    resaultText = it }*/
 
     companion object {
 
