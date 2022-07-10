@@ -15,7 +15,8 @@ import com.example.weatherapplication.view.adapter.LocationListAdapter
 import com.example.weatherapplication.viewModel.MainViewModel
 import com.example.weatherapplication.viewModel.LocationListFragmentViewModel
 import android.Manifest
-
+//проблема: приложение находиться в бесконечной загрузке несмотря на отсутсвие ошибок, успешную сборку и запуск проекта.
+// Предположение: проблема возникла из-за перечёркнутых методов
 class LocationListFragment : Fragment() {
     private lateinit var viewModel: LocationListFragmentViewModel
     private lateinit var activityViewModel: MainViewModel
