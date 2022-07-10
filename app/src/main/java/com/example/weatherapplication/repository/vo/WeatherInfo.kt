@@ -2,7 +2,6 @@ package com.example.weatherapplication.repository.vo
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.learning.weatherApp.repository.vo.Currently
 
 
 data class WeatherInfo(
@@ -22,8 +21,7 @@ data class WeatherInfo(
         parcel.readDouble(),
         parcel.readInt(),
         parcel.readString()?:""
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeParcelable(currently, flags)

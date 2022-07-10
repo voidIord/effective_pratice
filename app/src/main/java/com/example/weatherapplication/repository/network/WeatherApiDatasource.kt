@@ -20,7 +20,7 @@ class WeatherApiDatasource(
     val networkState: LiveData<NetworkState>
         get() = _networkState
 
-    private val _isLoading = MutableLiveData<Boolean>(false)
+    private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
@@ -33,7 +33,7 @@ class WeatherApiDatasource(
         _networkState.postValue(NetworkState.LOADING)
         _isLoading.postValue(true)
         try {
-            var singleList = mutableListOf<Single<WeatherInfo>>()
+            val singleList = mutableListOf<Single<WeatherInfo>>()
             location.forEach {
                 singleList.add(
                     apiService.getWeatherDetails(it.latitude, it.longitude)

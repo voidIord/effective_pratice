@@ -9,7 +9,7 @@ import com.example.weatherapplication.repository.vo.WeatherInfo
 import com.example.weatherapplication.view.fragment.LocationListFragmentDirections
 
 
-class LocationListAdapter(var weatherInfoList: List<WeatherInfo>) :
+class LocationListAdapter(private var weatherInfoList: List<WeatherInfo>) :
     RecyclerView.Adapter<LocationListAdapter.LocationViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
@@ -28,18 +28,18 @@ class LocationListAdapter(var weatherInfoList: List<WeatherInfo>) :
     }
 
     override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
-        holder.bind(weatherInfoList.get(position))
+        holder.bind(weatherInfoList[position])
     }
 
-    class LocationViewHolder(val v: WeatherListItemBinding) : RecyclerView.ViewHolder(v.root) {
+    class LocationViewHolder(private val v: WeatherListItemBinding) : RecyclerView.ViewHolder(v.root) {
         fun bind(info: WeatherInfo?) {
-            info?.let {
+            info?.let { it ->
                 v.weatherInfo = it
                 itemView.setOnClickListener {
                     val action =
                         LocationListFragmentDirections.actionListToWeatherDetail(
                             /*title =*/ v.tvLocationName.text.toString(),//закомментированная часть(её отсутствие) помогла исправиль ошибку
-                            /*weatherInfo =*/ it@ info
+                            /*weatherInfo =*/ info
                         )
 
                     Navigation.findNavController(it).navigate(action)

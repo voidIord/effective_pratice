@@ -1,4 +1,4 @@
-package com.learning.weatherApp.repository.vo
+package com.example.weatherapplication.repository.vo
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -64,8 +64,7 @@ data class Currently(
         parcel.readDouble(),
         parcel.readDouble(),
         parcel.readDouble()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeDouble(apparentTemperature)

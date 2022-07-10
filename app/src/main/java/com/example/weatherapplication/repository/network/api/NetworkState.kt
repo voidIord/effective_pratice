@@ -1,24 +1,22 @@
 package com.example.weatherapplication.repository.network.api
 
+/* изменено с целью избавить от предупреждений
 enum class Status {
     RUNNING,
     SUCCESS,
     FAILED
-}
+}*/
 
-class NetworkState(val status: Status, val msg: String) {
+class NetworkState(val msg: String) {
     companion object {
         @JvmStatic
-        val LOADED: NetworkState
-        @JvmStatic
-        val LOADING: NetworkState
-        @JvmStatic
-        val ERROR: NetworkState
+        val LOADED: NetworkState = NetworkState("Success")
 
-        init {
-            LOADED = NetworkState(Status.SUCCESS, "Success")
-            LOADING = NetworkState(Status.RUNNING, "Running")
-            ERROR = NetworkState(Status.FAILED, "Something went wrong")
-        }
+        @JvmStatic
+        val LOADING: NetworkState = NetworkState("Running")
+
+        @JvmStatic
+        val ERROR: NetworkState = NetworkState("Something went wrong")
+
     }
 }

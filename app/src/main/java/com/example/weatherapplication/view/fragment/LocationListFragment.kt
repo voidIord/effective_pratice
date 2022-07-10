@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+//import androidx.lifecycle.Observer больше не нужно в связи с удалением предупреждений
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapplication.R
 import com.example.weatherapplication.databinding.FragmentLocationListBinding
@@ -35,11 +35,13 @@ class LocationListFragment : Fragment() {
         return binding.root
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.refresh_menu_item, menu)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.refresh_weather_info -> activityViewModel.setUpdateFlag(true)
@@ -47,30 +49,31 @@ class LocationListFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         activityViewModel =
-            ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-        viewModel = ViewModelProvider(this).get(LocationListFragmentViewModel::class.java).also {
+            ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        viewModel = ViewModelProvider(this)[LocationListFragmentViewModel::class.java].also {
             binding.locationListViewModel = it
         }
         binding.rvLocationList.apply {
             adapter = LocationListAdapter(listOf())
         }
 
-        viewModel.networkState.observe(viewLifecycleOwner, Observer {
+        viewModel.networkState.observe(viewLifecycleOwner) {
             if (it == NetworkState.ERROR && !viewModel.listIsEmpty()) {
                 Toast.makeText(activity, it.msg, Toast.LENGTH_SHORT).show()
             }
-        })
+        }
         setObserverForActivityRestart()
         fetchWeatherInfoList()
     }
 
-    fun fetchWeatherInfoList() {
-        viewModel.weatherInfoList.observe(viewLifecycleOwner, Observer {
+    private fun fetchWeatherInfoList() {
+        viewModel.weatherInfoList.observe(viewLifecycleOwner) {
             (binding.rvLocationList.adapter as LocationListAdapter).updateList(it)
-        })
+        }
         if (viewModel.listIsEmpty()
             && activityViewModel.getUpdateFlag().value == false
             && viewModel.isLoading.value == false
@@ -80,14 +83,14 @@ class LocationListFragment : Fragment() {
     }
 
     private fun setObserverForActivityRestart() {
-        activityViewModel.getUpdateFlag().observe(requireActivity(), Observer {
+        activityViewModel.getUpdateFlag().observe(requireActivity()) {
             if (it) {
                 if (viewModel.isLoading.value == false) {
                     viewModel.fetchWeatherInfo()
                 }
                 activityViewModel.setUpdateFlag(false)
             }
-        })
+        }
     }
 
     //разрешение на использование тех или иных данных, в данном случае данных о местположении

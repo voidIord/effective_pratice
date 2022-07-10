@@ -10,15 +10,15 @@ import java.util.*
 @BindingAdapter("setLocationName")
 fun setLocationName(view: TextView, timeZone: String?) {
     timeZone?.let {
-        var location = timeZone;
+        var location = timeZone
         if (location.contains("/")) {
-            var strArray = location.split("/")
-            location = strArray.get(strArray.size - 1)
+            val strArray = location.split("/")
+            location = strArray[strArray.size - 1]
         }
         if (location.contains("_")) {
             location = location.replace("_", " ")
         }
-        view.setText(location)
+        view.text = location
     }
 }
 
@@ -46,6 +46,6 @@ fun convertLongToTime(view: TextView, time: Long?) {
     time?.let {
         val date = Date(time)
         val format = SimpleDateFormat("hh:mm a")
-        view.setText(format.format(date));
+        view.text = format.format(date)
     }
 }

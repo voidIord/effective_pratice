@@ -32,7 +32,7 @@ class LocationListFragmentViewModel : ViewModel() {
         weatherAppRepository.fetchWeatherInfo(getLocationList())
     }
 
-    fun getLocationList(): List<Location> {
+    private fun getLocationList(): List<Location> {
         val loc1 = Location("default_provider")
         loc1.latitude = 37.3855
         loc1.longitude = -122.088

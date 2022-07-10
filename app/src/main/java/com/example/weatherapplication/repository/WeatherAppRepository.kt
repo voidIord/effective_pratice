@@ -9,7 +9,7 @@ import com.example.weatherapplication.repository.network.api.WeatherApiInterface
 import com.example.weatherapplication.repository.vo.WeatherInfo
 import io.reactivex.disposables.CompositeDisposable
 
-class WeatherAppRepository(val compositeDisposable: CompositeDisposable) {
+class WeatherAppRepository(private val compositeDisposable: CompositeDisposable) {
 
     private val weatherApiDatasource by lazy {
         WeatherApiDatasource(apiService, compositeDisposable)
