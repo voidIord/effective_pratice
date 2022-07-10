@@ -1,4 +1,4 @@
-package com.example.weatherapplication.ViewModel
+package com.example.weatherapplication.viewModel
 
 import android.location.Location
 import androidx.lifecycle.LiveData
@@ -34,11 +34,11 @@ class LocationListFragmentViewModel : ViewModel() {
 
     fun getLocationList(): List<Location> {
         val loc1 = Location("default_provider")
-        loc1.latitude = 37.3855;
+        loc1.latitude = 37.3855
         loc1.longitude = -122.088
 
         val loc2 = Location("default_provider")
-        loc2.latitude = 40.7128;
+        loc2.latitude = 40.7128
         loc2.longitude = -74.0060
 
         return listOf(loc1, loc2)

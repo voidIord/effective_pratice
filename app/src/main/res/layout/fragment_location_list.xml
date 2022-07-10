@@ -6,7 +6,7 @@
 
         <variable
             name="locationListViewModel"
-            type="com.example.weatherapplication.ViewModel.LocationListFragmentViewModel" />
+            type="com.example.weatherapplication.viewModel.LocationListFragmentViewModel" />
 
         <import type="com.example.weatherapplication.repository.network.api.NetworkState" />
 

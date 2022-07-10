@@ -6,16 +6,14 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapplication.R
 import com.example.weatherapplication.databinding.FragmentLocationListBinding
 import com.example.weatherapplication.repository.network.api.NetworkState
 import com.example.weatherapplication.view.adapter.LocationListAdapter
-import com.example.weatherapplication.ViewModel.MainViewModel
-import com.example.weatherapplication.ViewModel.LocationListFragmentViewModel
-import com.example.weatherapplication.view.adapter.ViewPagerAdapter
+import com.example.weatherapplication.viewModel.MainViewModel
+import com.example.weatherapplication.viewModel.LocationListFragmentViewModel
 import android.Manifest
 
 class LocationListFragment : Fragment() {
@@ -26,7 +24,7 @@ class LocationListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {//тут было View?, но ? был удалён с целяю избавиться от предупреждения
         setHasOptionsMenu(true)
         binding = FragmentLocationListBinding.inflate(inflater, container, false)
             .apply {
@@ -52,9 +50,6 @@ class LocationListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         activityViewModel =
             ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-        /*viewModel = ViewModelProvider(this).get(LocationListFragmentViewModel::class.java).also {
-            binding.locationListViewModel = it
-        }*/
         viewModel = ViewModelProvider(this).get(LocationListFragmentViewModel::class.java).also {
             binding.locationListViewModel = it
         }
@@ -67,7 +62,7 @@ class LocationListFragment : Fragment() {
                 Toast.makeText(activity, it.msg, Toast.LENGTH_SHORT).show()
             }
         })
-        setObserverForActivityRestart();
+        setObserverForActivityRestart()
         fetchWeatherInfoList()
     }
 
@@ -97,9 +92,9 @@ class LocationListFragment : Fragment() {
     //разрешение на использование тех или иных данных, в данном случае данных о местположении
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //checkPermission() //- если раскомментировать эту строчку при входе в приложение
+        checkPermission() //- если раскомментировать эту строчку при входе в приложение
         // будет спрашиваться разрешение на использование данных
-        //init()
+        //init() тут когда то был, но функция удалена за ненадобностью
     }
     private lateinit var pLauncher: ActivityResultLauncher<String>
 

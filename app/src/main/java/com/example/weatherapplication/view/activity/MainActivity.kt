@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.databinding.DataBindingUtil
 import com.example.weatherapplication.R
-import com.example.weatherapplication.ViewModel.MainViewModel
+import com.example.weatherapplication.viewModel.MainViewModel
 import com.example.weatherapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
